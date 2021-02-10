@@ -15,7 +15,7 @@ class AppRoute extends Component {
                         <Link to='/'>Home</Link>
                     </div>
                     <Route path='/' exact component={App}/>
-                    <Route path='/about' exact component={<About value="Amazing"></About>}></Route>
+                    <Route path='/about' exact render={() => <About value="Great"></About>}></Route>
                 </div>
             </Router>
         );
