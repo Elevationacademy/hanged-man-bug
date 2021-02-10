@@ -14,8 +14,8 @@ class AppRoute extends Component {
                         <Link to='/about'>About</Link>
                         <Link to='/'>Home</Link>
                     </div>
-                    <Route path='/' component={App}/>
-                    <Route path='/about' component={<About value="Amazing"></About>}></Route>
+                    <Route path='/' exact component={App}/>
+                    <Route path='/about' exact component={<About value="Amazing"></About>}></Route>
                 </div>
             </Router>
         );
