@@ -14,7 +14,7 @@ class Letter extends Component {
   render() {
     return <span
       className={this.getClassName()}
-      onClick={this.onLetterClick()}>
+      onClick={this.onLetterClick}>
       {this.props.text}
     </span>
   }
