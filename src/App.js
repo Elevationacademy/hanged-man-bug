@@ -62,7 +62,7 @@ class App extends Component {
                 </Letters>
                 <EndGame
                     solution={this.state.solution}
-                    didWin={this.didUserGuessWord}
+                    didWin={this.didUserGuessWord()}
                     isGameOver={this.isGameOver()}>
                 </EndGame>
             </div>
