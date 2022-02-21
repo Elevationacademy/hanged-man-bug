@@ -3,7 +3,7 @@ import { Component } from "react";
 class About extends Component{
   render(){
     return (
-      <div> This is a {this.props.value} Game </div>
+      <div> This is an {this.props.value} Game </div>
     );
   }
 }
