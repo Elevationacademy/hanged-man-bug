@@ -28,7 +28,7 @@ class App extends Component {
         let newState = {}
 
         newState.letterStatus = Object.assign({}, this.state.letterStatus)
-        newState.letterStatus[letter] = true
+        newState.letterStatus.letter = true
 
         const isLetterInSolution = this.state.solution.toUpperCase().includes(letter)
         let newScore = this.state.score
