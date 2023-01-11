@@ -8,8 +8,8 @@ import EndGame from './components/EndGame';
 function App() {
     const solution = "REACT";
     const hint = "some kind of hint";
-    const [letterStatus, setLetterStatus] = useState(getAZLetters());
-    const [score, setScore] = useState(100);
+    let [letterStatus, setLetterStatus] = useState(getAZLetters());
+    let [score, setScore] = useState(100);
 
     function getAZLetters() {
         let status = {}
@@ -26,9 +26,7 @@ function App() {
         newState[letter] = true
 
         const isLetterInSolution = solution.toUpperCase().includes(letter)
-        let newScore = score
-        newScore += isLetterInSolution ? 5 : -20
-        setScore(newScore)
+        score += isLetterInSolution ? 5 : -20
         setLetterStatus(newState)
     }
 
