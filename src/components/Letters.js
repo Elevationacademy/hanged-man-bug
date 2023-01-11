@@ -4,7 +4,7 @@ import Letter from "./Letter.js";
 const Letters = ({ status, updateLetter }) => {
 
   const getLetter = (letter) => {
-    let isAvailable = !Boolean(status[letter])
+    let isAvailable = !Boolean(status.letter)
     return <Letter key={letter} text={letter} isAvailable={isAvailable} updateLetter={updateLetter} />
   }
 
