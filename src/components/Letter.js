@@ -11,7 +11,7 @@ const Letter = ({ text, isAvailable, updateLetter }) => {
     return isAvailable ? "letter" : "letter disabled"
   }
 
-  return <span className={getClassName()} onClick={onLetterClick}>
+  return <span className={getClassName()} onClick={onLetterClick()}>
     {text}
   </span>
 }
