@@ -6,9 +6,9 @@ import Score from './components/Score';
 import EndGame from './components/EndGame';
 
 function App() {
+    const solution = "REACT";
+    const hint = "some kind of hint";
     const [letterStatus, setLetterStatus] = useState(getAZLetters());
-    const [solution, setSolution] = useState("REACT");
-    const [hint, setHint] = useState("some kind of hint");
     const [score, setScore] = useState(100);
 
     function getAZLetters() {
