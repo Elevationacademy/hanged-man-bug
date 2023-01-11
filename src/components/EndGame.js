@@ -10,7 +10,7 @@ const EndGame = ({didWin, isGameOver, solution}) => {
     return message
   }
 
-  return isGameOver ? <div>
+  return isGameOver() ? <div>
     {getEndGameMessage()}
   </div> : null
 

@@ -56,7 +56,7 @@ function App() {
             <EndGame
                 solution={solution}
                 didWin={didUserGuessWord}
-                isGameOver={isGameOver}>
+                isGameOver={isGameOver()}>
             </EndGame>
         </div>
     );
