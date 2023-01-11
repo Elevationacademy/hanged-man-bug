@@ -22,13 +22,14 @@ function App() {
     const updateLetter = (letter) => {
         let newState = {}
 
-        newState.letterStatus = Object.assign({}, letterStatus)
-        newState.letterStatus[letter] = true
+        newState = Object.assign({}, letterStatus)
+        newState[letter] = true
 
         const isLetterInSolution = solution.toUpperCase().includes(letter)
         let newScore = score
         newScore += isLetterInSolution ? 5 : -20
         setScore(newScore)
+        setLetterStatus(newState)
     }
 
     const didUserGuessWord = () => {
