@@ -1,22 +1,17 @@
+import React, { useState } from 'react';
 import './App.css';
 import Letters from './components/Letters';
 import Solution from './components/Solution';
 import Score from './components/Score';
 import EndGame from './components/EndGame';
-import React, { Component } from 'react';
 
-class App extends Component {
-    constructor() {
-        super()
-        this.state = {
-            letterStatus: this.getAZLetters(),
-            solution: "REACT",
-            hint: "some kind of hint",
-            score: 100
-        }
-    }
+function App() {
+    const [letterStatus, setLetterStatus] = useState(getAZLetters());
+    const [solution, setSolution] = useState("REACT");
+    const [hint, setHint] = useState("some kind of hint");
+    const [score, setScore] = useState(100);
 
-    getAZLetters() {
+    function getAZLetters() {
         let status = {}
         for (let i = 65; i < 91; i++) {
             status[String.fromCharCode(i)] = false
@@ -24,50 +19,46 @@ class App extends Component {
         return status
     }
 
-    updateLetter = (letter) => {
+    const updateLetter = (letter) => {
         let newState = {}
 
-        newState.letterStatus = Object.assign({}, this.state.letterStatus)
-        newState.letterStatus.letter = true
+        newState.letterStatus = Object.assign({}, letterStatus)
+        newState.letterStatus[letter] = true
 
-        const isLetterInSolution = this.state.solution.toUpperCase().includes(letter)
-        let newScore = this.state.score
+        const isLetterInSolution = solution.toUpperCase().includes(letter)
+        let newScore = score
         newScore += isLetterInSolution ? 5 : -20
-        newState.score = newScore
-
-        this.setState(newState)
+        setScore(newScore)
     }
 
-    didUserGuessWord = () => {
-        return this.state.solution.split("")
-            .every(letter => this.state.letterStatus[letter])
+    const didUserGuessWord = () => {
+        return solution.split("")
+            .every(letter => letterStatus[letter])
     }
 
-    isGameOver() {
-        return this.state.score <= 0 || this.didUserGuessWord()
+    const isGameOver = () => {
+        return score <= 0 || didUserGuessWord()
     }
 
-    render() {
-        return (
-            <div className="App">
-                <Score value={this.state.score}></Score>
-                <Solution
-                    status={this.state.letterStatus}
-                    word={this.state.solution}
-                    hint={this.state.hint}>
-                </Solution>
-                <Letters
-                    status={this.state.letterStatus}
-                    updateLetter={this.updateLetter}>
-                </Letters>
-                <EndGame
-                    solution={this.state.solution}
-                    didWin={this.didUserGuessWord}
-                    isGameOver={this.isGameOver()}>
-                </EndGame>
-            </div>
-        );
-    }
+    return (
+        <div className="App">
+            <Score value={score}></Score>
+            <Solution
+                status={letterStatus}
+                word={solution}
+                hint={hint}>
+            </Solution>
+            <Letters
+                status={letterStatus}
+                updateLetter={updateLetter}>
+            </Letters>
+            <EndGame
+                solution={solution}
+                didWin={didUserGuessWord}
+                isGameOver={isGameOver}>
+            </EndGame>
+        </div>
+    );
 }
 
 export default App;

@@ -1,31 +1,24 @@
 // import './Solution.css';
+import React from 'react';
 
-import { Component } from "react";
+const Solution = ({word, status, hint}) => {
 
-class Solution extends Component {
-
-  getLetter(char){
-    let letter = "_"
-    if (this.props.word.includes(char) && this.props.status[char.toLocaleUpperCase()]) {
-      letter = char
-    } 
-    return <span> {letter} </span>;
-  }
-
-  getText() {
-    return this.props.word.split("").map(char => this.getLetter(char))
-}
-
-render(){
-  return (
-    <div>
-      {this.getText()}
-      <div>Hint:
-          <span>{this.props.hint}</span>
+    const getLetter = (char) => {
+      let letter = "_"
+      if (word.includes(char) && status[char.toLocaleUpperCase()]) {
+        letter = char
+      } 
+      return <span key={char}>{letter}</span>
+    }
+  
+    return (
+      <div>
+        {[...word].map(getLetter)}
+        <div>Hint:
+            <span>{hint}</span>
+        </div>
       </div>
-    </div>
-  );
-}
+    );
 }
 
-export default Solution;
+export default Solution

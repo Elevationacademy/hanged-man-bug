@@ -1,25 +1,22 @@
+import React from 'react';
+import { BrowserRouter as Router, Link, Route } from 'react-router-dom';
 import App from './App';
-import React, { Component } from 'react';
-import { BrowserRouter as Router, Link } from 'react-router-dom';
-import Route from 'react-router-dom/Route';
 import About from './components/About';
 
-class AppRoute extends Component {
+function AppRoute() {
 
-    render() {
-        return (
-            <Router>
-                <div className="App">
-                    <div id="nav">
-                        <Link to='/about'>About</Link>
-                        <Link to='/'>Home</Link>
-                    </div>
-                    <Route path='/' exact component={App}/>
-                    <Route path='/about' exact component={<About value="Amazing"></About>}></Route>
+    return (
+        <Router>
+            <div className="App">
+                <div id="nav">
+                    <Link to='/about'>About</Link>
+                    <Link to='/'>Home</Link>
                 </div>
-            </Router>
-        );
-    }
+                <Route path='/' exact component={App}/>
+                <Route path='/about' exact render={() => <About value="Amazing"/>} />
+            </div>
+        </Router>
+    );
 }
 
 export default AppRoute;

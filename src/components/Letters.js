@@ -1,28 +1,22 @@
-import { Component } from "react";
+import React from 'react'
 import Letter from "./Letter.js";
 
-class Letters extends Component {
+const Letters = ({ status, updateLetter }) => {
 
-  getLetter(letter) {
-    let isAvailable = !Boolean(this.props.status[letter])
-    return <Letter
-      text={letter}
-      isAvailable={isAvailable}
-      updateLetter={this.props.updateLetter}>
-    </Letter>
+  const getLetter = (letter) => {
+    let isAvailable = !Boolean(status[letter])
+    return <Letter key={letter} text={letter} isAvailable={isAvailable} updateLetter={updateLetter} />
   }
 
-  render() {
-    const lettersAZ = Object.keys(this.props.status)
-    return (
-      <div>Avialable Letters
-        <div>
-          {lettersAZ.map(letter => this.getLetter(letter))}
-        </div>
+  const lettersAZ = Object.keys(status)
 
+  return (
+    <div> Avialable Letters
+      <div>
+        {lettersAZ.map(getLetter)}
       </div>
-    );
-  }
+    </div>
+  );
 }
 
-export default Letters;
+export default Letters

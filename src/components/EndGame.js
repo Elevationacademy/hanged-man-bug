@@ -1,25 +1,19 @@
-import { Component } from 'react';
+import React from 'react'
 
-class EndGame extends Component {
+const EndGame = ({didWin, isGameOver, solution}) => {
 
-  getEndGameMessage = () => {
+  const getEndGameMessage = () => {
     let message = "Congratulations! You Won!"
-    if (!this.props.didWin){
-      message = "Game Over. The word was: " + this.props.solution
+    if (!didWin){
+      message = "Game Over. The word was: " + solution
     }
     return message
   }
 
-  render() {
-    return this.props.isGameOver ? <div>
-      {this.getEndGameMessage()}
-    </div> : null
-  }
+  return isGameOver ? <div>
+    {getEndGameMessage()}
+  </div> : null
 
 }
 
-export default EndGame;
-
-
-
-
+export default EndGame

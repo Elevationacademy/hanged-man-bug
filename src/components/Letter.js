@@ -1,28 +1,19 @@
 import './Letter.css';
-import { Component } from 'react';
+import React, { useCallback } from 'react';
 
-class Letter extends Component {
+const Letter = ({ text, isAvailable, updateLetter }) => {
 
-  onLetterClick = () => {
-    this.props.updateLetter(this.props.text)
+  const onLetterClick = useCallback(() => {
+    updateLetter(text)
+  }, [updateLetter, text])
+
+  const getClassName = () => {
+    return isAvailable ? "letter" : "letter disabled"
   }
 
-  getClassName = () => {
-    return this.props.isAvailable ? "letter" : "letter disabled"
-  }
-
-  render() {
-    return <span
-      className={this.getClassName()}
-      onClick={this.onLetterClick()}>
-      {this.props.text}
-    </span>
-  }
-
+  return <span className={getClassName()} onClick={onLetterClick}>
+    {text}
+  </span>
 }
 
-export default Letter;
-
-
-
-
+export default Letter

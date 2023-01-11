@@ -1,13 +1,10 @@
-// import './Score.css';
+import React from 'react'
 
-import { Component } from "react";
-
-class Score extends Component{
-  render(){
+const Score = (props) => {
     return (
-      <div> {props.value} </div>
+        <div>{props.value}</div>
     );
-  }
 }
 
-export default Score;
+export default Score
+
