@@ -1,5 +1,5 @@
 import './Letter.css';
-import React, { useCallback } from 'react';
+import React from 'react';
 
 const Letter = ({ text, isAvailable, updateLetter }) => {
 
